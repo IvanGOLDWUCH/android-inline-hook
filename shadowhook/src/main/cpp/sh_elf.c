@@ -455,7 +455,8 @@ static uintptr_t sh_elf_alloc_in_gap(sh_elf_t *self, sh_elf_gap_t *gap, size_t s
     if (0 != sh_util_mprotect(addr, size, PROT_READ | PROT_WRITE | PROT_EXEC)) return 0;
 
     // mark the current unit(s) as used
-    for (j = i; j < i + n_unit; j++) gap->flags[j] |= 0x80000000;
+    for (j = i; j < i + n_unit; j++)
+      gap->flags[j] |= 0x80000000;
 
     SH_LOG_INFO("elf: alloc addr %" PRIxPTR "(load_bias %" PRIxPTR ", %" PRIxPTR
                 "), size %zu, idx [%zu, %zu)",

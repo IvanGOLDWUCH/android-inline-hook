@@ -41,8 +41,10 @@ static uint8_t bss[4196];
 static uint8_t data[4196] = {1};
 
 static void hookee_init_helper(void) {
-  for (size_t i = 0; i < sizeof(data); i++) data[i] = 10;
-  for (size_t i = 0; i < sizeof(bss); i++) bss[i] = 11;
+  for (size_t i = 0; i < sizeof(data); i++)
+    data[i] = 10;
+  for (size_t i = 0; i < sizeof(bss); i++)
+    bss[i] = 11;
 }
 
 #if defined(__arm__)

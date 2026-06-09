@@ -53,10 +53,12 @@ static int sh_util_trim_cmp(char *haystack, char *needle) {
   char *end = start + strlen(start);
   if (__predict_false(start == end)) return -1;
 
-  while (start < end && isspace((int)(*start))) start++;
+  while (start < end && isspace((int)(*start)))
+    start++;
   if (__predict_false(start == end)) return -1;
 
-  while (start < end && isspace((int)(*(end - 1)))) end--;
+  while (start < end && isspace((int)(*(end - 1))))
+    end--;
   if (__predict_false(start == end)) return -1;
 
   size_t len = (size_t)(end - start);
@@ -337,7 +339,8 @@ struct tm *sh_util_localtime_r(const time_t *timep, long gmtoff, struct tm *resu
   }
   result->tm_yday = (int)days;
   ip = sh_util_mon_yday[SH_UTIL_ISLEAP(y)];
-  for (y = 11; days < (long int)ip[y]; --y) continue;
+  for (y = 11; days < (long int)ip[y]; --y)
+    continue;
   days -= ip[y];
   result->tm_mon = (int)y;
   result->tm_mday = (int)(days + 1);
