@@ -1,7 +1,7 @@
 name: Build ShadowHook
 
 on:
-  workflow_dispatch: # Этот блок создает кнопку запуска в интерфейсе
+  workflow_dispatch:
 
 jobs:
   build:
@@ -27,7 +27,7 @@ jobs:
     - name: Pack Binaries
       run: |
         mkdir -p output/libs/arm64-v8a output/libs/armeabi-v7a output/include
-        cp shadowhook/src/main/cpp/shadowhook.h output/include/
+        find . -name "shadowhook.h" -exec cp {} output/include/ \;
         find . -name "libshadowhook.a" -path "*/arm64-v8a/*" -exec cp {} output/libs/arm64-v8a/ \;
         find . -name "libshadowhook.a" -path "*/armeabi-v7a/*" -exec cp {} output/libs/armeabi-v7a/ \;
 
